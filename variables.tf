@@ -20,8 +20,8 @@
 # Project
 # --------------------
 variable "project_id" {
-  type = string
-
+  default     = "wizelake-non-prod"
+  type        = string
   description = "ID of the project in which to create resources and add IAM bindings."
 
 }
@@ -43,7 +43,7 @@ variable "project_services" {
 
 variable "region" {
   type    = string
-  default = "us-east4"
+  default = "us-east1"
 
   description = "Region in which to create resources."
 
@@ -56,8 +56,7 @@ variable "region" {
 
 variable "storage_bucket_name" {
   type    = string
-  default = ""
-
+  default = "vault-test-fred-mariana"
   description = "Name of the Google Cloud Storage bucket for the Vault backend storage. This must be globally unique across of of GCP. If left as the empty string, this will default to: '<project-id>-vault-data'."
 }
 
@@ -71,8 +70,7 @@ variable "storage_bucket_location" {
 
 variable "storage_bucket_class" {
   type    = string
-  default = "MULTI_REGIONAL"
-
+  default = "MULTI_REGIONAL_TEST_MARIANA_FRED"
   description = "Type of data storage to use. If you change this value, you will also need to choose a storage_bucket_location which matches this parameter type"
 }
 
@@ -119,8 +117,7 @@ variable "storage_bucket_force_destroy" {
 
 variable "service_account_name" {
   type    = string
-  default = "vault-admin"
-
+  default = "vault-admin-test-myf"
   description = "Name of the Vault service account."
 
 }
@@ -164,7 +161,7 @@ variable "service_account_storage_bucket_iam_roles" {
 
 variable "kms_keyring" {
   type    = string
-  default = "vault"
+  default = "vault-myf-2"
 
   description = "Name of the Cloud KMS KeyRing for asset encryption. Terraform will create this keyring."
 
@@ -172,7 +169,7 @@ variable "kms_keyring" {
 
 variable "kms_crypto_key" {
   type    = string
-  default = "vault-init"
+  default = "vault-init-myf-2"
 
   description = "The name of the Cloud KMS Key used for encrypting initial TLS certificates and for configuring Vault auto-unseal. Terraform will create this key."
 }
@@ -398,7 +395,7 @@ variable "vault_min_num_servers" {
 
 variable "vault_machine_type" {
   type    = string
-  default = "e2-standard-2"
+  default = "e2-micro"
 
   description = "Machine type to use for Vault instances."
 
@@ -406,7 +403,7 @@ variable "vault_machine_type" {
 
 variable "vault_max_num_servers" {
   type    = string
-  default = "7"
+  default = "2"
 
   description = "Maximum number of Vault server nodes to run at one time. The group will not autoscale beyond this number."
 }
